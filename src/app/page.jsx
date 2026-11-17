@@ -299,6 +299,7 @@ export default function Home() {
           {' '}or email me at <a className="link" href="mailto:saktirimala@gmail.com">saktirimala@gmail.com</a>.
           here's my <a className="link" href="/tools/Shakti_Rimal_Resume.pdf" target="_blank">resume</a>,
           and sometimes i <a className="link" href="/blog/">write stuff</a> too.
+          this site is <a className="link" href="https://github.com/wrrfsub/Portfolio" target="_blank" rel="noreferrer">open source</a>, steal whatever you like.
         </p>
 
         <section data-guide="exp">
