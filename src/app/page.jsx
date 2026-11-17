@@ -160,6 +160,21 @@ export default function Home() {
   const [theme, setThemeState] = useState('dark')
   const [open, setOpen] = useState(null)
   const [denied, setDenied] = useState(false)
+  const [nudge, setNudge] = useState(false)
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem('nudged')) return
+      sessionStorage.setItem('nudged', '1')
+    } catch {}
+    const wait = document.documentElement.classList.contains('building') ? 6500 : 1800
+    const show = setTimeout(() => setNudge(true), wait)
+    const hide = setTimeout(() => setNudge(false), wait + 3200)
+    return () => {
+      clearTimeout(show)
+      clearTimeout(hide)
+    }
+  }, [])
   const guide = useRef(null)
   const bdRef = useRef(null)
   bdRef.current = bd
@@ -261,8 +276,12 @@ export default function Home() {
       <main className="mx-auto flex max-w-[600px] flex-col gap-[30px] px-5 pb-36 pt-20 text-base leading-7">
         <header className="flex items-end justify-between" data-build="adding avatar">
           <h1 className="sr-only">shakti rimal (s4way), self taught developer from nepal</h1>
-          <button className="pfp-btn" title="click me" aria-label="start a quick tour" onClick={(e) => guide.current?.start(e.currentTarget)}>
+          <button className={`pfp-btn${nudge ? ' nudging' : ''}`} aria-label="start a quick tour" onClick={(e) => { setNudge(false); guide.current?.start(e.currentTarget) }}>
             <img src="/img/newpfp.jpg" alt="shakti rimal (s4way)" className="pfp h-[72px] w-[72px] rounded-full" />
+            <span className="nudge" aria-hidden="true">
+              <svg width="44" height="34" viewBox="0 0 44 34"><path d="M40 6C28 3 14 7 5 22" /><path d="M5 22l1.5-8M5 22l8-3" /></svg>
+              <span>psst, click me 👀</span>
+            </span>
           </button>
           <div className="flex flex-col items-end gap-2.5">
             <div className="flex gap-1.5" role="radiogroup" aria-label="theme" data-guide="themes">

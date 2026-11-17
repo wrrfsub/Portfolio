@@ -65,7 +65,7 @@ if ((np.getUTCMonth() === 11 && np.getUTCDate() === 12) || location.search.inclu
 try {
   if (location.pathname === '/' && !sessionStorage.getItem('built') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('building')
-    setTimeout(() => document.documentElement.classList.remove('building'), 8000)
+    setTimeout(() => document.documentElement.classList.replace('building', 'built-page'), 8000)
   }
 } catch {}
 `

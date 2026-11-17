@@ -74,7 +74,7 @@ export default function AgentCursor() {
 
     Promise.all(COLORS.map((_, i) => run(i))).then(async () => {
       await wait(450)
-      root.classList.remove('building')
+      root.classList.replace('building', 'built-page')
       agents.current = []
       render()
       try { sessionStorage.setItem('built', '1') } catch {}

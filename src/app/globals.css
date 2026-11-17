@@ -84,7 +84,51 @@ input, textarea { cursor: text; }
 .swatch:hover { transform: scale(1.15); }
 .swatch.on { box-shadow: 0 0 0 1.5px rgb(var(--bg)), 0 0 0 3px rgb(var(--fg) / 0.7); }
 
-.pfp-btn { border-radius: 50%; }
+.pfp-btn { position: relative; border-radius: 50%; }
+
+.nudge {
+  position: absolute;
+  left: calc(100% + 2px);
+  bottom: 52%;
+  display: none;
+  align-items: flex-start;
+  gap: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  color: var(--blue);
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1;
+  transform: rotate(-4deg);
+  transform-origin: bottom left;
+}
+@media (min-width: 640px) { .nudge { display: flex; } }
+.nudge path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 0.15s ease-in;
+}
+.nudge > span {
+  margin-top: -6px;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.15s ease-in;
+}
+.pfp-btn:is(:hover, :focus-visible, .nudging) .nudge path {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.45s 0.05s ease-out;
+}
+.pfp-btn:is(:hover, :focus-visible, .nudging) .nudge path + path { transition-delay: 0.45s; transition-duration: 0.2s; }
+.pfp-btn:is(:hover, :focus-visible, .nudging) .nudge > span {
+  clip-path: inset(0 -10% 0 0);
+  transition: clip-path 0.7s 0.55s steps(14, end);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nudge path, .nudge > span { transition: none !important; }
+}
 
 .quip {
   position: relative;
@@ -167,7 +211,7 @@ html.bday-theme ::selection { background: #ffb3d9; color: #150b13; }
 
 
 .building [data-build]:not(.built) { opacity: 0; }
-.building main > * { animation: none; }
+.building main > *, .built-page main > * { animation: none; }
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(6px); }
