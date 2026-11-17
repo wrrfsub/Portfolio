@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import AgentCursor from '@/lib/AgentCursor'
 import Birthday from '@/lib/Birthday'
 import Guide from '@/lib/Guide'
+import { applyTheme } from '@/lib/theme'
 
 const npt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Kathmandu' })
 
@@ -217,9 +218,7 @@ export default function Home() {
   }, [])
   function setTheme(id) {
     setThemeState(id)
-    document.documentElement.dataset.theme = id
-    document.documentElement.classList.toggle('dark', id !== 'light')
-    try { localStorage.setItem('theme', id) } catch {}
+    applyTheme(id)
   }
 
   const peek = (job) => ({
@@ -320,7 +319,7 @@ export default function Home() {
           {' '}or email me at <a className="link" href="mailto:saktirimala@gmail.com">saktirimala@gmail.com</a>.
           here's my <a className="link text-red-500" href="/tools/Shakti_Rimal_Resume.pdf" target="_blank">resume</a>,
           and sometimes i <a className="link" href="/blog/">write stuff</a> or make <a className="link" href="/tools/">tools</a>.
-          this site is <a className="link" href="https://github.com/wrrfsub/Portfolio" target="_blank" rel="noreferrer">open source</a>, steal whatever you like.
+          this site is <a className="link" href="https://github.com/wrrfsub/Portfolio" target="_blank" rel="noreferrer">open source</a> and here's <a className="link" href="/info/">how it's made</a>, steal whatever you like.
         </p>
 
         <section data-guide="exp">
