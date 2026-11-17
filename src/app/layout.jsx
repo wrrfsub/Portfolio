@@ -77,6 +77,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..700&family=Caveat:wght@600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
         <script dangerouslySetInnerHTML={{ __html: boot }} />
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="8aa4bff7-534c-4407-8d5e-cbdf36647319" data-domains="www.s4-way.me,s4-way.me" />
         <noscript><style>{'.building [data-build] { opacity: 1 !important; }'}</style></noscript>
       </head>
       <body className="page-bg antialiased">

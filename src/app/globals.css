@@ -200,6 +200,24 @@ main > :nth-child(6) { animation-delay: 0.25s; }
 }
 .post pre code { @apply bg-transparent p-0; }
 .post img { @apply my-4 rounded-lg; }
+.post mark {
+  white-space: nowrap;
+  color: inherit;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--blue) 30%, transparent);
+  transition: background-color 0.2s;
+}
+.post mark:hover { background: color-mix(in srgb, var(--blue) 50%, transparent); }
+.post .oss { bottom: calc(100% + 4px); }
+.post h2, .post h3 { scroll-margin-top: 32px; }
+.post a.hlink { text-decoration: none; color: inherit; }
+.post .hash { margin-left: 8px; opacity: 0; color: rgb(var(--fg) / 0.35); transition: opacity 0.2s; }
+.post .hlink:hover .hash, .post .hlink:focus-visible .hash { opacity: 1; }
+.post h2:target .hlink { animation: flash 1.6s ease-out; }
+@keyframes flash { 0%, 30% { color: var(--blue); } }
 
 .post .token.comment,
 .post .token.prolog { @apply text-neutral-400 dark:text-neutral-500; }

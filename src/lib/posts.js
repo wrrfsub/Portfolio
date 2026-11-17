@@ -23,6 +23,7 @@ function read(file) {
     minutes: Math.max(1, Math.round(raw.split(/\s+/).length / 200)),
     description: data.description ?? '',
     titleHtml: data.titleHtml ?? null,
+    about: data.about ?? null,
     content,
   }
 }
@@ -34,5 +35,17 @@ export function getPosts() {
     .map(read)
     .sort((a, b) => (a.date < b.date ? 1 : -1))
 }
+
+const slug = (s) =>
+  s.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z#0-9]+;/g, '').replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-')
+
+marked.use({
+  renderer: {
+    heading({ tokens, depth, text }) {
+      const id = slug(text)
+      return `<h${depth} id="${id}"><a class="hlink" href="#${id}">${this.parser.parseInline(tokens)}<span class="hash" aria-hidden="true">#</span></a></h${depth}>\n`
+    },
+  },
+})
 
 export const render = (md) => marked.parse(md)

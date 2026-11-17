@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getPosts, render } from '@/lib/posts'
+import PostShare from '@/lib/PostShare'
 
 export const dynamicParams = false
 
@@ -28,6 +29,31 @@ export async function generateMetadata({ params }) {
   }
 }
 
+const SITE = 'https://www.s4-way.me'
+const ABOUT = {
+  serveros: { '@type': 'SoftwareApplication', name: 'ServerOS', url: 'https://serveros.com/', applicationCategory: 'DeveloperApplication', operatingSystem: 'Linux' },
+}
+
+function schema(p) {
+  const url = `${SITE}/blog/${p.slug}/`
+  const me = { '@type': 'Person', name: 'Shakti Rimal', alternateName: 's4way', url: SITE }
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: p.title,
+    description: p.description,
+    url,
+    mainEntityOfPage: url,
+    datePublished: p.date,
+    dateModified: p.date,
+    image: `${SITE}/og.png`,
+    inLanguage: 'en',
+    author: me,
+    publisher: me,
+    ...(ABOUT[p.about] && { about: ABOUT[p.about] }),
+  }
+}
+
 export default async function Post({ params }) {
   const data = find((await params).slug)
   return (
@@ -37,7 +63,9 @@ export default async function Post({ params }) {
         {data.titleHtml ? <span dangerouslySetInnerHTML={{ __html: data.titleHtml }} /> : data.title}
       </h1>
       <p className="muted mt-2 font-mono text-[13px]">{data.dateNice} · {data.minutes} min read</p>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema(data)) }} />
       <article className="post mt-10" dangerouslySetInnerHTML={{ __html: render(data.content) }} />
+      <PostShare />
 
       {(data.older || data.newer) && (
         <nav className="mt-12 flex justify-between gap-4 border-t border-white/10 pt-6">
