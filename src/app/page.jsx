@@ -317,7 +317,7 @@ export default function Home() {
           find me on <a className="link" href="https://github.com/wrrfsub" target="_blank" rel="noreferrer">github</a>,{' '}
           <a className="link" href="https://discord.com/users/1338099754080665651" target="_blank" rel="noreferrer">discord</a>
           {' '}or email me at <a className="link" href="mailto:saktirimala@gmail.com">saktirimala@gmail.com</a>.
-          here's my <a className="link" href="/tools/Shakti_Rimal_Resume.pdf" target="_blank">resume</a>,
+          here's my <a className="link text-red-500" href="/tools/Shakti_Rimal_Resume.pdf" target="_blank">resume</a>,
           and sometimes i <a className="link" href="/blog/">write stuff</a> or make <a className="link" href="/tools/">tools</a>.
           this site is <a className="link" href="https://github.com/wrrfsub/Portfolio" target="_blank" rel="noreferrer">open source</a>, steal whatever you like.
         </p>
