@@ -8,8 +8,6 @@ import { applyTheme } from '@/lib/theme'
 const npt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Kathmandu' })
 
 const NPT_MS = 345 * 60000
-const bday = (y) => Date.UTC(y, 11, 12) - NPT_MS
-const pad = (n) => String(n).padStart(2, '0')
 
 function confetti(x, y, n = 90) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -71,7 +69,7 @@ const TOUR = [
   { sel: '[data-guide="studio"]', text: 'my little freelance studio. need something built? come say hi in the discord.' },
   { sel: '[data-guide="socials"]', text: 'wanna talk? github, discord, email, all right here. resume too.' },
   { sel: '[data-guide="exp"]', text: 'everywhere i\'ve worked. click any row to see what i actually did there.' },
-  { sel: '[data-guide="bday"]', text: 'my birthday countdown. come back on 12 dec, something happens 👀' },
+  { sel: '[data-guide="bday"]', text: "it's my birthday today! pop the balloons and click the cake for confetti 🎉" },
   { sel: '[data-guide="themes"]', text: "not a dark mode fan? pick a theme up here. that's the tour, have fun poking around!" },
 ]
 
@@ -190,16 +188,12 @@ export default function Home() {
   useEffect(() => {
     const force = new URLSearchParams(location.search).has('bday')
     const tick = () => {
-      const t = Date.now()
-      const np = new Date(t + NPT_MS)
-      let y = np.getUTCFullYear()
-      if (force || (np.getUTCMonth() === 11 && np.getUTCDate() === 12)) return setBd((b) => (b?.today ? b : { today: true, age: y - 2008 }))
-      if (bday(y) <= t) y++
-      const sec = Math.floor((bday(y) - t) / 1000)
-      setBd({ age: y - 2008, d: Math.floor(sec / 86400), h: Math.floor(sec / 3600) % 24, m: Math.floor(sec / 60) % 60, s: sec % 60 })
+      const np = new Date(Date.now() + NPT_MS)
+      const today = force || (np.getUTCMonth() === 11 && np.getUTCDate() === 12)
+      setBd((b) => (today ? (b?.today ? b : { today: true, age: np.getUTCFullYear() - 2008 }) : null))
     }
     tick()
-    const id = setInterval(tick, 1000)
+    const id = setInterval(tick, 60000)
     return () => clearInterval(id)
   }, [])
 
@@ -360,44 +354,27 @@ export default function Home() {
           </ul>
         </section>
 
-        <section data-guide="bday" className={`bday mt-6 flex flex-col items-center text-center${bd?.today ? ' party' : ''}`}>
-          <svg className="sticker" onClick={cakeClick} width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-            <g stroke="#fff" strokeWidth="5" strokeLinejoin="round" fill="#fff">
-              <rect x="10" y="30" width="44" height="22" rx="5" />
-              <rect x="16" y="20" width="32" height="14" rx="4" />
-              <rect x="29.5" y="9" width="5" height="12" rx="2" />
-              <rect x="6" y="50" width="52" height="7" rx="3.5" />
-            </g>
-            <rect x="6" y="50" width="52" height="7" rx="3.5" fill="#d9d9e3" />
-            <rect x="10" y="30" width="44" height="22" rx="5" fill="#ffb3d9" />
-            <path d="M10 37c4 4 7 4 11 0s7-4 11 0 7 4 11 0 7-4 11 0v-2H10z" fill="#fff" />
-            <rect x="16" y="20" width="32" height="14" rx="4" fill="#ffdcc7" />
-            <path d="M16 25c3 3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0v-2H16z" fill="#fff" />
-            <rect x="29.5" y="11" width="5" height="10" rx="2" fill="#7fa6ff" />
-            <path d="M32 3c3 3 3 6 0 7.5-3-1.5-3-4.5 0-7.5z" fill="#ffb02e" />
-          </svg>
-          {bd?.today ? (
-            <>
-              <p className="mt-4 text-lg font-medium">it's my birthday, i'm {bd.age} today</p>
-              <p className="muted text-[13px]">pop a balloon or two</p>
-            </>
-          ) : (
-            <>
-              <p className="muted mt-3 text-[13px]">turning {bd?.age ?? 18} in</p>
-              <div className="mt-1 flex items-start gap-3 tabular-nums">
-                {[['days', bd?.d], ['hrs', bd?.h], ['min', bd?.m], ['sec', bd?.s]].map(([unit, v], i) => (
-                  <div key={unit} className="contents">
-                    {i > 0 && <span className="muted text-2xl leading-8">:</span>}
-                    <div className="flex w-12 flex-col items-center">
-                      <span className="text-2xl font-medium leading-8">{v === undefined ? '--' : pad(v)}</span>
-                      <span className="muted text-[11px] leading-4">{unit}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </section>
+        {bd?.today && (
+          <section data-guide="bday" className="bday party mt-6 flex flex-col items-center text-center">
+            <svg className="sticker" onClick={cakeClick} width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+              <g stroke="#fff" strokeWidth="5" strokeLinejoin="round" fill="#fff">
+                <rect x="10" y="30" width="44" height="22" rx="5" />
+                <rect x="16" y="20" width="32" height="14" rx="4" />
+                <rect x="29.5" y="9" width="5" height="12" rx="2" />
+                <rect x="6" y="50" width="52" height="7" rx="3.5" />
+              </g>
+              <rect x="6" y="50" width="52" height="7" rx="3.5" fill="#d9d9e3" />
+              <rect x="10" y="30" width="44" height="22" rx="5" fill="#ffb3d9" />
+              <path d="M10 37c4 4 7 4 11 0s7-4 11 0 7 4 11 0 7-4 11 0v-2H10z" fill="#fff" />
+              <rect x="16" y="20" width="32" height="14" rx="4" fill="#ffdcc7" />
+              <path d="M16 25c3 3 5 3 8 0s5-3 8 0 5 3 8 0 5-3 8 0v-2H16z" fill="#fff" />
+              <rect x="29.5" y="11" width="5" height="10" rx="2" fill="#7fa6ff" />
+              <path d="M32 3c3 3 3 6 0 7.5-3-1.5-3-4.5 0-7.5z" fill="#ffb02e" />
+            </svg>
+            <p className="mt-4 text-lg font-medium">it's my birthday, i'm {bd.age} today</p>
+            <p className="muted text-[13px]">pop a balloon or two</p>
+          </section>
+        )}
 
         <div className={`peek${cardOn ? ' on' : ''}`} style={{ left: card?.x ?? 0, top: card?.y ?? 0 }} aria-hidden="true">
           {card && (
