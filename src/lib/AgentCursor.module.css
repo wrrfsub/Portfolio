@@ -1,0 +1,45 @@
+.agent,
+.box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+.agent {
+  will-change: transform;
+  transition:
+    transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.35s ease,
+    filter 0.35s ease;
+}
+.agent span {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  white-space: nowrap;
+  border-radius: 6px;
+  padding: 1px 6px;
+  font-size: 11px;
+  line-height: 16px;
+  color: #fff;
+}
+.gone {
+  opacity: 0;
+  filter: blur(4px);
+}
+.box {
+  z-index: 49;
+  border-radius: 6px;
+  border: 1px solid var(--c);
+  background: color-mix(in srgb, var(--c) 8%, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.box.on {
+  opacity: 1;
+  transition:
+    width 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    height 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.12s ease;
+}

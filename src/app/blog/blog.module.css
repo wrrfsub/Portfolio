@@ -1,0 +1,41 @@
+.arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.25s ease;
+}
+.post:hover .arrow {
+  opacity: 1;
+  transform: none;
+}
+
+.scribble {
+  overflow: visible;
+}
+.line {
+  fill: none;
+  stroke: rgb(var(--fg) / 0.5);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 170;
+  stroke-dashoffset: 170;
+  animation: write 3.2s ease-in-out infinite;
+}
+.pen {
+  offset-path: path('M8 46c12-14 20-14 26-2s14 12 22-2 16-14 22 0 14 12 22-2 12-12 18-4');
+  offset-rotate: 0deg;
+  filter: drop-shadow(0 3px 4px rgb(0 0 0 / 0.4));
+  animation: ride 3.2s ease-in-out infinite;
+}
+@keyframes write {
+  0% { stroke-dashoffset: 170; opacity: 1; }
+  70% { stroke-dashoffset: 0; opacity: 1; }
+  90%, 100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@keyframes ride {
+  0% { offset-distance: 0%; }
+  70%, 100% { offset-distance: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .line { animation: none; stroke-dashoffset: 0; }
+  .pen { animation: none; offset-distance: 100%; }
+}
