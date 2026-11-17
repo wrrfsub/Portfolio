@@ -315,7 +315,8 @@ export default function Home() {
         <p data-build="writing side stuff">i also run <a className="link" data-guide="studio" {...peek(jobs[2])} href="https://discord.gg/wmctpwXXUD" target="_blank" rel="noreferrer">subwaystudios</a>, a small freelance studio where i take client projects from first brief to after launch support. stuff i sell lives on <a className="link" style={{ color: 'var(--pink)' }} href="https://builtbybit.com/creators/s4way.652483/" target="_blank" rel="noreferrer">builtbybit</a>.</p>
         <p data-guide="socials" data-build="linking socials">
           find me on <a className="link" href="https://github.com/wrrfsub" target="_blank" rel="noreferrer">github</a>,{' '}
-          <a className="link" href="https://discord.com/users/1338099754080665651" target="_blank" rel="noreferrer">discord</a>
+          <a className="link" href="https://discord.com/users/1338099754080665651" target="_blank" rel="noreferrer">discord</a>,{' '}
+          <a className="link" href="https://x.com/nyxx_s7" target="_blank" rel="noreferrer">x</a>
           {' '}or email me at <a className="link" href="mailto:saktirimala@gmail.com">saktirimala@gmail.com</a>.
           here's my <a className="link text-red-500" href="/tools/Shakti_Rimal_Resume.pdf" target="_blank">resume</a>,
           and sometimes i <a className="link" href="/blog/">write stuff</a> or make <a className="link" href="/tools/">tools</a>.

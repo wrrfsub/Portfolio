@@ -26,7 +26,7 @@ export const metadata = {
     username: 's4way',
     images: [{ url: '/og.png', width: 1200, height: 630, alt: TITLE }],
   },
-  twitter: { card: 'summary_large_image', title: TITLE, description: desc, images: ['/og.png'] },
+  twitter: { card: 'summary_large_image', creator: '@nyxx_s7', title: TITLE, description: desc, images: ['/og.png'] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 }
 
@@ -49,6 +49,7 @@ const person = {
     'https://linkedin.com/in/shakti-rimal-a48aa13b2',
     'https://builtbybit.com/creators/s4way.652483/',
     'https://discord.com/users/1338099754080665651',
+    'https://x.com/nyxx_s7',
   ],
 }
 
