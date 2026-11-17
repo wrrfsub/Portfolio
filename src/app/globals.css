@@ -240,3 +240,16 @@ main > :nth-child(6) { animation-delay: 0.25s; }
   .oss span { animation: none; opacity: 1; }
   .bday:hover .sticker, .party .sticker, .party:hover .sticker { animation: none; }
 }
+
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .pfp { view-transition-name: pfp; }
+  ::view-transition-group(*) { animation-duration: 0.45s; animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+  ::view-transition-old(root) { animation: 0.25s ease-out both vt-out; }
+  ::view-transition-new(root) { animation: 0.35s cubic-bezier(0.22, 1, 0.36, 1) both vt-in; }
+}
+@keyframes vt-out { to { opacity: 0; filter: blur(4px); } }
+@keyframes vt-in { from { opacity: 0; filter: blur(4px); transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

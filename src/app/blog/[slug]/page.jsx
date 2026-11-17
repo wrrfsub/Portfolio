@@ -59,7 +59,7 @@ export default async function Post({ params }) {
   return (
     <main className="mx-auto max-w-[660px] px-5 pb-36 pt-20 text-base leading-7">
       <a className="muted transition-colors hover:text-white" href="/blog/">← writing</a>
-      <h1 className="mt-10 text-2xl font-semibold tracking-tight">
+      <h1 className="mt-10 w-fit text-2xl font-semibold tracking-tight" style={{ viewTransitionName: `t-${data.slug}` }}>
         {data.titleHtml ? <span dangerouslySetInnerHTML={{ __html: data.titleHtml }} /> : data.title}
       </h1>
       <p className="muted mt-2 font-mono text-[13px]">{data.dateNice} · {data.minutes} min read</p>
