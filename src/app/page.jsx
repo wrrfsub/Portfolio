@@ -285,7 +285,7 @@ export default function Home() {
           </div>
         </header>
 
-        {bd?.today && <h1 className="bday-title" data-build="it's my birthday">it's my birthday today, i'm turning {bd.age}</h1>}
+        {bd?.today && <h1 className="bday-title">it's my birthday today, i'm turning {bd.age}</h1>}
         <p data-guide="intro" data-build="writing intro">i'm shakti (s4way), a self taught <span className="quip" data-quip="i'm bad with design xd" tabIndex={0}>developer</span> from chitwan, nepal 🇳🇵, working in the hosting industry.</p>
         <p data-build="writing about work">
           i'm currently a jr. swe at <span className="relative" data-guide="serveros"><a className="link" style={{ color: 'var(--blue)' }} {...peek(jobs[0])} href="https://serveros.com/" target="_blank" rel="noreferrer">serveros</a><a className="oss" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"><svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true"><path d="M37 6C25 4 12 9 5 26" /><path d="M5 26l-.5-8M5 26l7-4" /></svg><span>it's open source!</span></a></span><a className="muted text-[13px] hover:text-white sm:hidden" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"> (open source)</a>, a linux server management panel,
@@ -340,7 +340,7 @@ export default function Home() {
           </ul>
         </section>
 
-        <section data-guide="bday" className={`bday mt-6 flex flex-col items-center text-center${bd?.today ? ' party' : ''}`} data-build="counting to my birthday">
+        <section data-guide="bday" className={`bday mt-6 flex flex-col items-center text-center${bd?.today ? ' party' : ''}`}>
           <svg className="sticker" onClick={cakeClick} width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
             <g stroke="#fff" strokeWidth="5" strokeLinejoin="round" fill="#fff">
               <rect x="10" y="30" width="44" height="22" rx="5" />
