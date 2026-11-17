@@ -240,7 +240,7 @@ export default function Home() {
       else if (e.key === 'e') location.href = 'mailto:saktirimala@gmail.com'
     }
     function onVisibility() {
-      document.title = document.hidden ? 'come back 👀' : bdRef.current?.today ? "it's my birthday · s4way" : 's4way'
+      document.title = document.hidden ? 'come back 👀' : bdRef.current?.today ? "it's my birthday · s4way" : 'shakti rimal (s4way)'
     }
     addEventListener('keydown', shortcuts)
     document.addEventListener('visibilitychange', onVisibility)
@@ -260,8 +260,9 @@ export default function Home() {
 
       <main className="mx-auto flex max-w-[600px] flex-col gap-[30px] px-5 pb-36 pt-20 text-base leading-7">
         <header className="flex items-end justify-between" data-build="adding avatar">
+          <h1 className="sr-only">shakti rimal (s4way), self taught developer from nepal</h1>
           <button className="pfp-btn" title="click me" aria-label="start a quick tour" onClick={(e) => guide.current?.start(e.currentTarget)}>
-            <img src="/img/newpfp.jpg" alt="s4way" className="pfp h-[72px] w-[72px] rounded-full" />
+            <img src="/img/newpfp.jpg" alt="shakti rimal (s4way)" className="pfp h-[72px] w-[72px] rounded-full" />
           </button>
           <div className="flex flex-col items-end gap-2.5">
             <div className="flex gap-1.5" role="radiogroup" aria-label="theme" data-guide="themes">
@@ -285,7 +286,7 @@ export default function Home() {
           </div>
         </header>
 
-        {bd?.today && <h1 className="bday-title">it's my birthday today, i'm turning {bd.age}</h1>}
+        {bd?.today && <h2 className="bday-title">it's my birthday today, i'm turning {bd.age}</h2>}
         <p data-guide="intro" data-build="writing intro">i'm shakti (s4way), a self taught <span className="quip" data-quip="i'm bad with design xd" tabIndex={0}>developer</span> from chitwan, nepal 🇳🇵, working in the hosting industry.</p>
         <p data-build="writing about work">
           i'm currently a jr. swe at <span className="relative" data-guide="serveros"><a className="link" style={{ color: 'var(--blue)' }} {...peek(jobs[0])} href="https://serveros.com/" target="_blank" rel="noreferrer">serveros</a><a className="oss" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"><svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true"><path d="M37 6C25 4 12 9 5 26" /><path d="M5 26l-.5-8M5 26l7-4" /></svg><span>it's open source!</span></a></span><a className="muted text-[13px] hover:text-white sm:hidden" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"> (open source)</a>, a linux server management panel,

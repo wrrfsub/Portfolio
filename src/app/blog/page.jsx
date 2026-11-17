@@ -1,7 +1,12 @@
 import { getPosts } from '@/lib/posts'
 import s from './blog.module.css'
 
-export const metadata = { title: 'writing · s4way' }
+export const metadata = {
+  title: 'writing · s4way',
+  description: 'notes from breaking servers, picking tools and fixing things. real numbers, no fluff.',
+  alternates: { canonical: '/blog/' },
+  openGraph: { url: '/blog/', title: 'writing · s4way' },
+}
 
 const short = (iso) =>
   new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toLowerCase()

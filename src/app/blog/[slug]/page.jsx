@@ -18,7 +18,14 @@ function find(slug) {
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const p = getPosts().find((p) => p.slug === slug)
-  return p ? { title: `${p.title} · s4way`, description: p.description } : {}
+  if (!p) return { robots: { index: false, follow: true } }
+  const url = `/blog/${p.slug}/`
+  return {
+    title: `${p.title} · s4way`,
+    description: p.description,
+    alternates: { canonical: url },
+    openGraph: { type: 'article', url, title: p.title, description: p.description, publishedTime: p.date, authors: ['Shakti Rimal'] },
+  }
 }
 
 export default async function Post({ params }) {

@@ -3,17 +3,53 @@ import { Analytics } from '@vercel/analytics/next'
 
 const desc = "hi, i'm shakti (s4way). self taught developer from nepal 🇳🇵, jr. swe at serveros, working in the hosting industry."
 
+const SITE = 'https://www.s4-way.me'
+const TITLE = 'shakti rimal (s4way)'
+
 export const metadata = {
-  title: 's4way',
+  metadataBase: new URL(SITE),
+  title: TITLE,
   description: desc,
-  icons: { icon: { url: '/img/newpfp.jpg', type: 'image/jpeg' } },
+  applicationName: 's4way',
+  authors: [{ name: 'Shakti Rimal', url: SITE }],
+  creator: 'Shakti Rimal',
+  alternates: { canonical: '/' },
+  icons: { icon: { url: '/img/newpfp.jpg', type: 'image/jpeg' }, apple: '/img/newpfp.jpg' },
   openGraph: {
-    type: 'website',
-    title: 's4way',
+    type: 'profile',
+    url: '/',
+    siteName: 's4way',
+    title: TITLE,
     description: desc,
-    images: [{ url: 'https://s4-way.me/og.png', width: 1200, height: 630 }],
+    firstName: 'Shakti',
+    lastName: 'Rimal',
+    username: 's4way',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: TITLE }],
   },
-  twitter: { card: 'summary_large_image', title: 's4way', description: desc, images: ['https://s4-way.me/og.png'] },
+  twitter: { card: 'summary_large_image', title: TITLE, description: desc, images: ['/og.png'] },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+}
+
+export const viewport = { themeColor: '#0a0a0a' }
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Shakti Rimal',
+  alternateName: 's4way',
+  url: SITE,
+  image: `${SITE}/img/newpfp.jpg`,
+  jobTitle: 'Junior Software Engineer',
+  description: desc,
+  worksFor: { '@type': 'Organization', name: 'ServerOS', url: 'https://serveros.com/' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Chitwan', addressCountry: 'NP' },
+  knowsAbout: ['Linux', 'Web development', 'React', 'Next.js', 'Node.js', 'Laravel', 'Game server hosting', 'Pterodactyl'],
+  sameAs: [
+    'https://github.com/wrrfsub',
+    'https://linkedin.com/in/shakti-rimal-a48aa13b2',
+    'https://builtbybit.com/creators/s4way.652483/',
+    'https://discord.com/users/1338099754080665651',
+  ],
 }
 
 const boot = `
@@ -44,6 +80,7 @@ export default function RootLayout({ children }) {
         <noscript><style>{'.building [data-build] { opacity: 1 !important; }'}</style></noscript>
       </head>
       <body className="page-bg antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
         <div>{children}</div>
         <Analytics />
       </body>
