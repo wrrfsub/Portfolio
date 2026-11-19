@@ -32,6 +32,7 @@ export async function generateMetadata({ params }) {
 const SITE = 'https://www.s4-way.me'
 const ABOUT = {
   serveros: { '@type': 'SoftwareApplication', name: 'ServerOS', url: 'https://serveros.com/', applicationCategory: 'DeveloperApplication', operatingSystem: 'Linux' },
+  nginx: { '@type': 'SoftwareApplication', name: 'nginx', url: 'https://nginx.org/', applicationCategory: 'WebServer', operatingSystem: 'Linux' },
 }
 
 function schema(p) {

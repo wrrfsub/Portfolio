@@ -311,7 +311,7 @@ export default function Home() {
           <a className="link" href="https://discord.com/users/1338099754080665651" target="_blank" rel="noreferrer">discord</a>,{' '}
           <a className="link" href="https://x.com/nyxx_s7" target="_blank" rel="noreferrer">x</a>
           {' '}or email me at <a className="link" href="mailto:saktirimala@gmail.com">saktirimala@gmail.com</a>.
-          here's my <a className="link text-red-500" href="/tools/Shakti_Rimal_Resume.pdf" target="_blank">resume</a>,
+          here's my <a className="link text-red-500" href="/tools/Shakti_Rimal_Resume.pdf?v=2" target="_blank">resume</a>,
           and sometimes i <a className="link" href="/blog/">write stuff</a> or make <a className="link" href="/tools/">tools</a>.
           this site is <a className="link" href="https://github.com/wrrfsub/Portfolio" target="_blank" rel="noreferrer">open source</a> and here's <a className="link" href="/info/">how it's made</a>, steal whatever you like.
         </p>
