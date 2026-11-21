@@ -299,7 +299,7 @@ export default function Home() {
         </header>
 
         {bd?.today && <h2 className="bday-title">it's my birthday today, i'm turning {bd.age}</h2>}
-        <p data-guide="intro" data-build="writing intro">i'm shakti (s4way), a self taught <span className="quip" data-quip="i'm bad with design xd" tabIndex={0}>developer</span> from chitwan, nepal 🇳🇵, working in the hosting industry.</p>
+        <p data-guide="intro" data-build="writing intro">i'm shakti (s4way), a self taught <span className="quip" data-quip="i'm bad with design xd" tabIndex={0}>developer</span> from chitwan, nepal 🇳🇵, working in the hosting industry. oh and i use <span className="quip" data-quip="ok it's cachyos, but that's arch based so it counts" tabIndex={0}>arch</span> btw.</p>
         <p data-build="writing about work">
           i'm currently a jr. swe at <span className="relative" data-guide="serveros"><a className="link" style={{ color: 'var(--blue)' }} {...peek(jobs[0])} href="https://serveros.com/" target="_blank" rel="noreferrer">serveros</a><a className="oss" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"><svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true"><path d="M37 6C25 4 12 9 5 26" /><path d="M5 26l-.5-8M5 26l7-4" /></svg><span>it's open source!</span></a></span><a className="muted text-[13px] hover:text-white sm:hidden" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"> (open source)</a>, a linux server management panel,
           and admin at <a className="link" style={{ color: 'var(--orange)' }} {...peek(jobs[1])} href="https://discordjoblist.com/" target="_blank" rel="noreferrer">discordjoblist</a>,

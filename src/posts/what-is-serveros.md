@@ -66,10 +66,10 @@ curl -fsSL https://raw.githubusercontent.com/serveroshq/panel/main/docker/self-h
 prices are in gbp, per month:
 
 - **self host**: £0 forever, unlimited machines, agents with your own ai key.
-- **essential**: £5, 1 machine. for solo devs.
-- **pro**: £12, up to 5 machines. for small teams.
-- **business**: £79, up to 25 machines. adds sso, scim, custom roles and logs in your own database.
-- **enterprise**: custom pricing.
+- **essential**: £19, up to 2 machines. deploys, backups, monitoring and alerts.
+- **pro**: £49, up to 10 machines. adds workflows, agents and status pages.
+- **scale**: £199, up to 25 machines. adds sso, custom roles and advanced audit logs.
+- **enterprise**: from £799, with slas and limits you agree with them.
 
 every plan has unlimited apps, sites and databases. you pay for servers, not apps. yearly billing gets you 2 months free, and every new workspace starts with 14 days of pro.
 
