@@ -302,3 +302,35 @@ main > :nth-child(6) { animation-delay: 0.25s; }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+
+.bad {
+  text-decoration: underline dotted rgb(var(--fg) / 0.4);
+  text-underline-offset: 4px;
+  cursor: help;
+  outline: none;
+}
+.badcard {
+  position: absolute;
+  z-index: 40;
+  left: 0;
+  top: calc(100% + 8px);
+  width: min(100%, 230px);
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid rgb(var(--fg) / 0.1);
+  background: rgb(var(--card) / 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.5);
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(var(--fg) / 0.8);
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(-4px) scale(0.98);
+  transform-origin: top left;
+  transition: opacity 0.18s ease, filter 0.18s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bad:hover .badcard,
+.bad:focus-visible .badcard { opacity: 1; filter: blur(0); transform: none; }
+
