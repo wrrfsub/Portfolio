@@ -7,6 +7,8 @@
 .link:active { transform: scale(0.96); }
 
 html { cursor: url('/cursor/arrow.svg') 4 3, auto; }
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
 a, button, summary, label, [role='button'] { cursor: url('/cursor/link.svg') 4 3, pointer; }
 input, textarea { cursor: text; }
 
