@@ -1,5 +1,6 @@
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
+import { GITHUB_AVATAR } from '@/lib/profile'
 
 const desc = "hi, i'm shakti (s4way). self taught developer from nepal 🇳🇵, jr. swe at serveros, working in the hosting industry."
 
@@ -14,7 +15,7 @@ export const metadata = {
   authors: [{ name: 'Shakti Rimal', url: SITE }],
   creator: 'Shakti Rimal',
   alternates: { canonical: '/' },
-  icons: { icon: { url: '/img/newpfp.jpg', type: 'image/jpeg' }, apple: '/img/newpfp.jpg' },
+  icons: { icon: { url: GITHUB_AVATAR, type: 'image/jpeg' }, apple: GITHUB_AVATAR },
   openGraph: {
     type: 'profile',
     url: '/',
@@ -38,7 +39,7 @@ const person = {
   name: 'Shakti Rimal',
   alternateName: 's4way',
   url: SITE,
-  image: `${SITE}/img/newpfp.jpg`,
+  image: GITHUB_AVATAR,
   jobTitle: 'Junior Software Engineer',
   description: desc,
   worksFor: { '@type': 'Organization', name: 'ServerOS', url: 'https://serveros.com/' },

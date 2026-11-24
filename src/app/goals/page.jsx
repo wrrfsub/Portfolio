@@ -1,3 +1,5 @@
+import { GITHUB_AVATAR } from '@/lib/profile'
+
 export const metadata = {
   title: 'goals · s4way',
   description: 'what i want to get done in 2027, and how far along i am.',
@@ -48,7 +50,7 @@ export default function Goals() {
     <main className="mx-auto flex max-w-[600px] flex-col gap-[30px] px-5 pb-36 pt-20 text-base leading-7">
       <header className="flex items-center justify-between">
         <a href="/" className="group flex items-center gap-3" aria-label="home">
-          <img src="/img/newpfp.jpg" alt="" className="pfp h-9 w-9 rounded-full" />
+          <img src={GITHUB_AVATAR} alt="" className="pfp h-9 w-9 rounded-full" />
           <span className="muted transition-colors group-hover:text-white">← s4way</span>
         </a>
       </header>

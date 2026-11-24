@@ -1,3 +1,5 @@
+import { GITHUB_AVATAR } from '@/lib/profile'
+
 export const metadata = {
   title: 'tools · s4way',
   description: 'small free tools i made. they run in your browser, no sign up.',
@@ -14,7 +16,7 @@ export default function Tools() {
     <main className="mx-auto flex max-w-[600px] flex-col gap-[30px] px-5 pb-36 pt-20 text-base leading-7">
       <header className="flex items-center justify-between">
         <a href="/" className="group flex items-center gap-3" aria-label="home">
-          <img src="/img/newpfp.jpg" alt="" className="pfp h-9 w-9 rounded-full" />
+          <img src={GITHUB_AVATAR} alt="" className="pfp h-9 w-9 rounded-full" />
           <span className="muted transition-colors group-hover:text-white">← s4way</span>
         </a>
         <p className="muted text-[13px] tabular-nums">{TOOLS.length} {TOOLS.length === 1 ? 'tool' : 'tools'}</p>

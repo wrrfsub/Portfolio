@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useImperativeHandle, useRef, useState } from 'react'
+import { GITHUB_AVATAR } from '@/lib/profile'
 import s from './Guide.module.css'
 
 const wait = (ms) => new Promise((r) => setTimeout(r, ms))
@@ -145,7 +146,7 @@ export default function Guide({ steps, ref }) {
         <div className={s['mini-y']} style={{ transform: `translateY(${pos.y}px)` }}>
           <div className={s.bob}>
             <div className={`${s.body} ${landing ? s.land : ''}`} style={{ rotate: `${lean * 7}deg` }} onAnimationEnd={() => setLanding(false)}>
-              <img src="/img/newpfp.jpg" alt="mini s4way" />
+              <img src={GITHUB_AVATAR} alt="mini s4way" />
             </div>
             {talk && <span className={`${s.point} ${s[dir]}`} aria-hidden="true" />}
           </div>

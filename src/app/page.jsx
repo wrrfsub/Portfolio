@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import AgentCursor from '@/lib/AgentCursor'
 import Birthday from '@/lib/Birthday'
 import Guide from '@/lib/Guide'
+import { GITHUB_AVATAR } from '@/lib/profile'
 import { applyTheme } from '@/lib/theme'
 
 const npt = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Kathmandu' })
@@ -270,7 +271,7 @@ export default function Home() {
         <header className="flex items-end justify-between" data-build="adding avatar">
           <h1 className="sr-only">shakti rimal (s4way), self taught developer from nepal</h1>
           <button className={`pfp-btn${nudge ? ' nudging' : ''}`} aria-label="start a quick tour" onClick={(e) => { setNudge(false); guide.current?.start(e.currentTarget) }}>
-            <img src="/img/newpfp.jpg" alt="shakti rimal (s4way)" className="pfp h-[72px] w-[72px] rounded-full" />
+            <img src={GITHUB_AVATAR} alt="shakti rimal (s4way)" className="pfp h-[72px] w-[72px] rounded-full" />
             <span className="nudge" aria-hidden="true">
               <svg width="44" height="34" viewBox="0 0 44 34"><path d="M40 6C28 3 14 7 5 22" /><path d="M5 22l1.5-8M5 22l8-3" /></svg>
               <span>psst, click me 👀</span>

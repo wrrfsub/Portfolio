@@ -1,4 +1,5 @@
 import { getPosts } from '@/lib/posts'
+import { GITHUB_AVATAR } from '@/lib/profile'
 import s from './blog.module.css'
 
 export const metadata = {
@@ -21,7 +22,7 @@ export default function Blog() {
     <main className="mx-auto flex max-w-[600px] flex-col gap-[30px] px-5 pb-36 pt-20 text-base leading-7">
       <header className="flex items-center justify-between">
         <a href="/" className="group flex items-center gap-3" aria-label="home">
-          <img src="/img/newpfp.jpg" alt="" className="pfp h-9 w-9 rounded-full" />
+          <img src={GITHUB_AVATAR} alt="" className="pfp h-9 w-9 rounded-full" />
           <span className="muted transition-colors group-hover:text-white">← s4way</span>
         </a>
         {posts.length > 0 && <p className="muted text-[13px] tabular-nums">{posts.length} posts</p>}
