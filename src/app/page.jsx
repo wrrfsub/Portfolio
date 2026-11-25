@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import AgentCursor from '@/lib/AgentCursor'
 import Birthday from '@/lib/Birthday'
 import Guide from '@/lib/Guide'
 import { GITHUB_AVATAR } from '@/lib/profile'
@@ -167,7 +166,7 @@ export default function Home() {
       if (sessionStorage.getItem('nudged')) return
       sessionStorage.setItem('nudged', '1')
     } catch {}
-    const wait = document.documentElement.classList.contains('building') ? 6500 : 1800
+    const wait = 1800
     const show = setTimeout(() => setNudge(true), wait)
     const hide = setTimeout(() => setNudge(false), wait + 3200)
     return () => {
@@ -204,7 +203,7 @@ export default function Home() {
     partied.current = true
     document.documentElement.classList.add('bday-theme')
     document.title = "it's my birthday · s4way"
-    const wait = document.documentElement.classList.contains('building') ? 2600 : 400
+    const wait = 400
     setTimeout(() => confetti(innerWidth / 2, innerHeight * 0.35, 180), wait)
   }, [bd?.today])
 
@@ -263,12 +262,11 @@ export default function Home() {
 
   return (
     <>
-      <AgentCursor />
       {bd?.today && <Birthday />}
       <Guide ref={guide} steps={TOUR} />
 
       <main className="mx-auto flex max-w-[600px] flex-col gap-[30px] px-5 pb-36 pt-20 text-base leading-7">
-        <header className="flex items-end justify-between" data-build="adding avatar">
+        <header className="flex items-end justify-between">
           <h1 className="sr-only">shakti rimal (s4way), self taught developer from nepal</h1>
           <button className={`pfp-btn${nudge ? ' nudging' : ''}`} aria-label="start a quick tour" onClick={(e) => { setNudge(false); guide.current?.start(e.currentTarget) }}>
             <img src={GITHUB_AVATAR} alt="shakti rimal (s4way)" className="pfp h-[72px] w-[72px] rounded-full" />
@@ -300,14 +298,14 @@ export default function Home() {
         </header>
 
         {bd?.today && <h2 className="bday-title">it's my birthday today, i'm turning {bd.age}</h2>}
-        <p data-guide="intro" data-build="writing intro">i'm shakti (s4way), a self taught <span className="quip" data-quip="i'm bad with design xd" tabIndex={0}>developer</span> from chitwan, nepal 🇳🇵, working in the hosting industry. oh and i use <span className="quip" data-quip="ok it's cachyos, but that's arch based so it counts" tabIndex={0}>arch</span> btw.</p>
-        <p data-build="writing about work">
+        <p data-guide="intro">i'm shakti (s4way), a self taught <span className="quip" data-quip="i'm bad with design xd" tabIndex={0}>developer</span> from chitwan, nepal 🇳🇵, working in the hosting industry. oh and i use <span className="quip" data-quip="ok it's cachyos, but that's arch based so it counts" tabIndex={0}>arch</span> btw.</p>
+        <p>
           i'm currently a jr. swe at <span className="relative" data-guide="serveros"><a className="link" style={{ color: 'var(--blue)' }} {...peek(jobs[0])} href="https://serveros.com/" target="_blank" rel="noreferrer">serveros</a><a className="oss" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"><svg width="40" height="30" viewBox="0 0 40 30" aria-hidden="true"><path d="M37 6C25 4 12 9 5 26" /><path d="M5 26l-.5-8M5 26l7-4" /></svg><span>it's open source!</span></a></span><a className="muted text-[13px] hover:text-white sm:hidden" href="https://github.com/serveroshq/panel" target="_blank" rel="noreferrer"> (open source)</a>, a linux server management panel,
           and admin at <a className="link" style={{ color: 'var(--orange)' }} {...peek(jobs[1])} href="https://discordjoblist.com/" target="_blank" rel="noreferrer">discordjoblist</a>,
           shipping features and helping users fix whatever broke.
         </p>
-        <p data-build="writing side stuff">i also run <a className="link" data-guide="studio" {...peek(jobs[2])} href="https://discord.gg/wmctpwXXUD" target="_blank" rel="noreferrer">subwaystudios</a>, a small freelance studio where i take client projects from first brief to after launch support. stuff i sell lives on <a className="link" style={{ color: 'var(--pink)' }} href="https://builtbybit.com/creators/s4way.652483/" target="_blank" rel="noreferrer">builtbybit</a>.</p>
-        <p data-guide="socials" data-build="linking socials">
+        <p>i also run <a className="link" data-guide="studio" {...peek(jobs[2])} href="https://discord.gg/wmctpwXXUD" target="_blank" rel="noreferrer">subwaystudios</a>, a small freelance studio where i take client projects from first brief to after launch support. stuff i sell lives on <a className="link" style={{ color: 'var(--pink)' }} href="https://builtbybit.com/creators/s4way.652483/" target="_blank" rel="noreferrer">builtbybit</a>.</p>
+        <p data-guide="socials">
           find me on <a className="link" href="https://github.com/wrrfsub" target="_blank" rel="noreferrer">github</a>,{' '}
           <a className="link" href="https://discord.com/users/1338099754080665651" target="_blank" rel="noreferrer">discord</a>,{' '}
           <a className="link" href="https://x.com/nyxx_s7" target="_blank" rel="noreferrer">x</a>
@@ -318,10 +316,10 @@ export default function Home() {
         </p>
 
         <section data-guide="exp">
-          <h2 className="muted mb-3" data-build="adding heading">experience</h2>
+          <h2 className="muted mb-3">experience</h2>
           <ul className="space-y-2">
             {jobs.map((job, i) => (
-              <li key={job.company} data-build={`adding ${job.company.toLowerCase()}`}>
+              <li key={job.company}>
                 <div className="row flex cursor-pointer items-baseline gap-4" onClick={(e) => !e.target.closest('a') && toggle(i)}>
                   <span className="muted w-16 shrink-0 font-mono text-[13px]">{job.period.includes('present') ? 'current' : job.period.slice(-4)}</span>
                   {job.url ? (

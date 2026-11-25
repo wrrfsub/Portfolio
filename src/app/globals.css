@@ -212,20 +212,28 @@ html.bday-theme .page-bg {
 html.bday-theme ::selection { background: #ffb3d9; color: #150b13; }
 
 
-.building [data-build]:not(.built) { opacity: 0; }
-.building main > *, .built-page main > * { animation: none; }
-
 @keyframes rise {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(12px); filter: blur(8px); }
 }
-main > * {
-  animation: rise 0.45s ease-out backwards;
+main > *,
+main section > ul > li {
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
-main > :nth-child(2) { animation-delay: 0.05s; }
-main > :nth-child(3) { animation-delay: 0.1s; }
-main > :nth-child(4) { animation-delay: 0.15s; }
-main > :nth-child(5) { animation-delay: 0.2s; }
-main > :nth-child(6) { animation-delay: 0.25s; }
+main > :nth-child(2) { animation-delay: 0.08s; }
+main > :nth-child(3) { animation-delay: 0.16s; }
+main > :nth-child(4) { animation-delay: 0.24s; }
+main > :nth-child(5) { animation-delay: 0.32s; }
+main > :nth-child(6) { animation-delay: 0.4s; }
+main > :nth-child(n + 7) { animation-delay: 0.48s; }
+main section > ul > li { animation-delay: calc(0.5s + var(--n, 0) * 0.06s); }
+main section > ul > li:nth-child(2) { --n: 1; }
+main section > ul > li:nth-child(3) { --n: 2; }
+main section > ul > li:nth-child(4) { --n: 3; }
+main section > ul > li:nth-child(5) { --n: 4; }
+main section > ul > li:nth-child(n + 6) { --n: 5; }
+@media (prefers-reduced-motion: reduce) {
+  main > *, main section > ul > li { animation: none; }
+}
 
 
 .post p, .post ul, .post ol {

@@ -1,5 +1,3 @@
-import Countdown from '@/lib/Countdown'
-
 import { GITHUB_AVATAR } from '@/lib/profile'
 
 export const metadata = {
@@ -32,6 +30,7 @@ const GOALS = [
       </>
     ),
     saved: 200,
+    soon: 600,
     target: 4000,
     stuff: [
       ['pc', "haven't thought about specs yet. might just go mac"],
@@ -69,8 +68,19 @@ export default function Goals() {
             <li key={g.title}>
               <h2 className="font-medium">{g.title}</h2>
               <p className="muted relative mt-1">{g.why}</p>
-              <div className="mt-4 flex items-baseline justify-between font-mono text-[13px] tabular-nums">
-                <span><span style={{ color: 'var(--blue)' }}>{usd(g.saved)}</span> <span className="muted">saved</span></span>
+              <div className="mt-10 flex items-baseline justify-between font-mono text-[13px] tabular-nums">
+                <span>
+                  <span className="relative" style={{ color: 'var(--blue)' }}>
+                    {usd(g.saved)}
+                    {g.soon && (
+                      <span className="oss font-sans" style={{ display: 'flex', left: '60%' }} aria-hidden="true">
+                        <svg width="40" height="30" viewBox="0 0 40 30"><path d="M37 6C25 4 12 9 5 26" /><path d="M5 26l-.5-8M5 26l7-4" /></svg>
+                        <span className="whitespace-nowrap">+{usd(g.soon)} soon</span>
+                      </span>
+                    )}
+                  </span>{' '}
+                  <span className="muted">saved</span>
+                </span>
                 <span className="muted">{pct}% of {usd(g.target)}</span>
               </div>
               <div
@@ -87,12 +97,6 @@ export default function Goals() {
               <p className="muted mt-2 text-[13px]">{usd(g.target - g.saved)} to go. ramen era begins.</p>
               {g.stuff && (
                 <>
-                  <div className="mt-6 rounded-xl px-4 py-3" style={{ border: '1px solid rgb(var(--fg) / 0.1)' }}>
-                    <p className="text-[15px]">i think i can get everything except the pc in the next 2 weeks. hold me to it.</p>
-                    <p className="mt-1 font-mono text-[13px] tabular-nums" style={{ color: 'var(--blue)' }} aria-live="off">
-                      <Countdown to="2026-12-09T23:59:59+05:45" done="time's up. did i do it?" />
-                    </p>
-                  </div>
                   <h3 className="muted mb-2 mt-6">the shopping list</h3>
                   <ul className="flex flex-col">
                     {g.stuff.map(([what, pick]) => (

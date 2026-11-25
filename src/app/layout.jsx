@@ -64,12 +64,6 @@ const np = new Date(Date.now() + 345 * 60000)
 if ((np.getUTCMonth() === 11 && np.getUTCDate() === 12) || location.search.includes('bday')) {
   document.documentElement.classList.add('bday-theme')
 }
-try {
-  if (location.pathname === '/' && !sessionStorage.getItem('built') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.classList.add('building')
-    setTimeout(() => document.documentElement.classList.replace('building', 'built-page'), 8000)
-  }
-} catch {}
 `
 
 export default function RootLayout({ children }) {
@@ -80,7 +74,6 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..700&family=Caveat:wght@600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
         <script dangerouslySetInnerHTML={{ __html: boot }} />
         <script defer src="https://cloud.umami.is/script.js" data-website-id="8aa4bff7-534c-4407-8d5e-cbdf36647319" data-domains="www.s4-way.me,s4-way.me" />
-        <noscript><style>{'.building [data-build] { opacity: 1 !important; }'}</style></noscript>
       </head>
       <body className="page-bg antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }} />
