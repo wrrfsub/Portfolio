@@ -1,3 +1,5 @@
+import Countdown from '@/lib/Countdown'
+
 import { GITHUB_AVATAR } from '@/lib/profile'
 
 export const metadata = {
@@ -85,6 +87,12 @@ export default function Goals() {
               <p className="muted mt-2 text-[13px]">{usd(g.target - g.saved)} to go. ramen era begins.</p>
               {g.stuff && (
                 <>
+                  <div className="mt-6 rounded-xl px-4 py-3" style={{ border: '1px solid rgb(var(--fg) / 0.1)' }}>
+                    <p className="text-[15px]">i think i can get everything except the pc in the next 2 weeks. hold me to it.</p>
+                    <p className="mt-1 font-mono text-[13px] tabular-nums" style={{ color: 'var(--blue)' }} aria-live="off">
+                      <Countdown to="2026-12-09T23:59:59+05:45" done="time's up. did i do it?" />
+                    </p>
+                  </div>
                   <h3 className="muted mb-2 mt-6">the shopping list</h3>
                   <ul className="flex flex-col">
                     {g.stuff.map(([what, pick]) => (
